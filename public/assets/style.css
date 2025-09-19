@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.text-from-chat{
+    background-color: lightblue;
+    padding: 100px;
+    margin: 5%;
+    border-radius: 10px;
+}

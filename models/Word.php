@@ -1,14 +1,13 @@
 <?php
 require_once __DIR__ . '/../core/DB.php';
+require_once __DIR__ . '/ModelAbstract.php';
 
-class Word {
-    public static function getAll(): array {
-        $stmt = DB::conn()->query("SELECT * FROM words ORDER BY created_at DESC");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+class Word extends ModelAbstract {
+    protected static string $table = 'words';
+    protected static string $order_by = 'created_at DESC';
 
     public static function create(string $word, string $translation): bool {
-        $stmt = DB::conn()->prepare("INSERT INTO words (word, translation) VALUES (?, ?)");
+        $stmt = DB::conn()->prepare("INSERT INTO ".static::$table." (word, translation) VALUES (?, ?)");
         return $stmt->execute([$word, $translation]);
     }
 }

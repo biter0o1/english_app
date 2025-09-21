@@ -1,2 +1,3 @@
 /config/Config.php
 .env
+vendor
